@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Машины</h2>
+
+<form method="get" class="row mb-3">
+    <div class="col-md-3">
+        <select name="category" class="form-select">
+            <option value="">Все категории</option>
+            <option value="sport">Спорткар</option>
+            <option value="classic">Классика</option>
+            <option value="pickup">Пикап</option>
+            <option value="kamaz">Камаз</option>
+        </select>
+    </div>
+    <div class="col-md-3">
+        <input type="text" name="city" placeholder="Город" class="form-control">
+    </div>
+    <div class="col-md-2">
+        <button class="btn btn-primary">Фильтровать</button>
+    </div>
+</form>
+
+<div class="row">
+    {% for car in cars %}
+    <div class="col-md-4 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ car.name }}</h5>
+                <p class="card-text">Модель: {{ car.model }}</p>
+                <p class="card-text">Город: {{ car.city }}</p>
+                <a href="{% url 'car-detail' car.id %}" class="btn btn-primary">Подробнее</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

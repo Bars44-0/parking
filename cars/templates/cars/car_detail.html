@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ car.name }} ({{ car.model }})</h2>
+<p>Город: {{ car.city }}</p>
+<p>Продавец: {{ car.seller }}</p>
+<p>Цена: {{ car.price }} сом</p>
+<p>Год: {{ car.year }}</p>
+<p>Номер машины: {{ car.plate_number }}</p>
+<a href="{% url 'booking-create' car.id %}" class="btn btn-success">Забронировать</a>
+{% endblock %}
